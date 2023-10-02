@@ -28,19 +28,19 @@ unsigned long GetTickCount()
 
 int benchmark(void (*fn)(int* array, int length))
 {
-    int inicio, final, tempo_decorrido;
+    int start, end, elapsed_time;
     int vetor[TAM];
     for (int x = 0; x < TAM; x++)
     {
         vetor[x] = rand() % 100;
     }
 
-    inicio = GetTickCount();
+    start = GetTickCount();
 
     fn(vetor, TAM);
 
-    final = GetTickCount();
+    end = GetTickCount();
 
-    tempo_decorrido = final - inicio;
-    return tempo_decorrido;
+    elapsed_time = end - start;
+    return elapsed_time;
 }
