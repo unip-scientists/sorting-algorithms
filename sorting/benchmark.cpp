@@ -3,8 +3,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define TAM 10000
-
 #ifdef _WIN64
 
 #include "windows.h"
@@ -26,18 +24,18 @@ unsigned long GetTickCount()
 #endif
 
 
-int benchmark(void (*fn)(int* array, int length))
+int benchmark(void (*fn)(int* array, int length), int totalInputLength)
 {
     int start, end, elapsed_time;
-    int vetor[TAM];
-    for (int x = 0; x < TAM; x++)
+    int vetor[totalInputLength];
+    for (int x = 0; x < totalInputLength; x++)
     {
-        vetor[x] = rand() % 100;
+        vetor[x] = rand() % 4294967296;
     }
 
     start = GetTickCount();
 
-    fn(vetor, TAM);
+    fn(vetor, totalInputLength);
 
     end = GetTickCount();
 
